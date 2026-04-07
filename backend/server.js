@@ -17,7 +17,13 @@ const app = express();
 
 connectDB();
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({
+origin: [
+'http://localhost:3000',
+'https://thefolio.vercel.app', // ← your Vercel URL (update after deployment)
+],
+credentials: true,
+}));
 app.use(express.json());
 
 
