@@ -51,7 +51,7 @@ function AboutPage() {
           identity, and JavaScript breathes life into the page. Together they form the language of
           the modern web — a canvas for both engineers and designers.
         </p>
-      <img src={process.env.PUBLIC_URL + '/art.png'} alt="Web Development as Art" />
+  
       </div>
 
       <div className="about-section">
@@ -114,7 +114,7 @@ function AboutPage() {
           <li>Adding interactivity with JavaScript and React</li>
           <li>Connecting frontend to a backend API</li>
         </ol>
-     <img src={process.env.PUBLIC_URL + '/about2.png'} alt="Learning web development" />
+     
       </div>
 
     </div>
