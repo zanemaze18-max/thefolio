@@ -1,4 +1,3 @@
-```jsx
 // src/pages/AboutPage.js
 import React, { useState } from 'react';
 
@@ -27,11 +26,9 @@ function AboutPage() {
     const q = quizData[currentQ];
     setSubmitting(true);
     const correct = selected === q.answer;
-
     if (correct) setScore(s => s + 1);
+    setResult({ text: correct ? '✅ Correct!' : `❌ Wrong! Answer: ${q.options[q.answer]}`, color: correct ? 'green' : '#dc2626' });
 
-    setResult({
-text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, color: correct ? 'green' : '#dc2626' });
     setTimeout(() => {
       if (currentQ + 1 < quizData.length) {
         setCurrentQ(q => q + 1);
@@ -69,9 +66,7 @@ text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, colo
               <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '8px' }}>
                 Question {currentQ + 1} of {quizData.length}
               </p>
-
               <h3>{quizData[currentQ].question}</h3>
-
               <div style={{ marginTop: '14px' }}>
                 {quizData[currentQ].options.map((opt, i) => (
                   <div
@@ -83,11 +78,9 @@ text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, colo
                   </div>
                 ))}
               </div>
-
               <button onClick={handleSubmit} disabled={selected === null || submitting}>
                 Submit Answer
               </button>
-
               {result.text && (
                 <div style={{ color: result.color, marginTop: '12px', fontWeight: 600 }}>
                   {result.text}
@@ -97,17 +90,15 @@ text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, colo
           ) : (
             <div style={{ textAlign: 'center', padding: '10px 0' }}>
               <h3>Quiz Complete! 🎉</h3>
-
               <p style={{ fontSize: '1.2rem', marginTop: '12px', color: 'var(--navy)', fontWeight: 700 }}>
                 Your score: {score} / {quizData.length}
               </p>
-
               <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>
                 {score === quizData.length
-                  ? "Perfect score! You're a web dev wizard! 🧙"
+                  ? 'Perfect score! You\'re a web dev wizard! 🧙'
                   : score >= 7
                     ? 'Great job! You clearly know your stuff.'
-                    : "Keep learning — you'll ace it next time!"}
+                    : 'Keep learning — you\'ll ace it next time!'}
               </p>
             </div>
           )}
@@ -116,7 +107,6 @@ text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, colo
 
       <div className="about-section">
         <h2>My Journey in Web Development</h2>
-
         <ol style={{ marginLeft: '20px', marginTop: '12px', color: 'var(--text-muted)', lineHeight: '1.9' }}>
           <li>Learning HTML structure and semantic elements</li>
           <li>Applying CSS for layout, colors, and typography</li>
@@ -124,7 +114,6 @@ text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, colo
           <li>Adding interactivity with JavaScript and React</li>
           <li>Connecting frontend to a backend API</li>
         </ol>
-
         <img src="/about2.png" alt="Learning web development" />
       </div>
 
@@ -133,4 +122,3 @@ text: correct ? '✅ Correct!' : ❌ Wrong! Answer: ${q.options[q.answer]}, colo
 }
 
 export default AboutPage;
-```
