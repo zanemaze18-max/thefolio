@@ -17,15 +17,26 @@ const app = express();
 
 connectDB();
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-app.use(cors({
-origin: [
-'http://localhost:3000',
-'https://thefolio.vercel.app', // ← your Vercel URL (update after deployment)
-],
-credentials: true,
-}));
-app.use(express.json());
 
+// ── CORS: reads FRONTEND_URL from Render environment variables ──
+// In Render dashboard → Environment → Add:  FRONTEND_URL = https://your-app.vercel.app
+const allowedOrigins = [
+  "http://localhost:3000",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow Postman / curl (no origin header)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    console.error("CORS blocked origin:", origin);
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true,
+}));
+
+app.use(express.json());
 
 app.use("/api/auth",     authRoutes);
 app.use("/api/posts",    postRoutes);
@@ -33,7 +44,7 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/admin",    adminRoutes);
 
-app.get("/", (req, res) => res.send("API is running..."));
+app.get("/", (req, res) => res.send("TheFolio API is running ✓"));
 
 app.use((req, res) => res.status(404).json({ message: "API route not found" }));
 
@@ -43,4 +54,4 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
