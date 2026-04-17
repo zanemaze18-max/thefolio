@@ -31,12 +31,7 @@ function AboutPage() {
     if (correct) setScore(s => s + 1);
 
     setResult({
-text: correct
-  ? '\u2705 Correct!'
-  : `\u274C Wrong! Answer: ${q.options[q.answer]}`
-      color: correct ? 'green' : '#dc2626'
-    });
-
+text: correct ? ' Correct!' : ` Wrong! Answer: ${q.options[q.answer]}`, color: correct ? 'green' : '#dc2626' });
     setTimeout(() => {
       if (currentQ + 1 < quizData.length) {
         setCurrentQ(q => q + 1);
