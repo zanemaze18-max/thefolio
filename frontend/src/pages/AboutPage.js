@@ -31,9 +31,9 @@ function AboutPage() {
     if (correct) setScore(s => s + 1);
 
     setResult({
-      text: correct
-        ? '✅ Correct!'
-        : `❌ Wrong! Answer: ${q.options[q.answer]}`,
+text: correct
+  ? '\u2705 Correct!'
+  : `\u274C Wrong! Answer: ${q.options[q.answer]}`
       color: correct ? 'green' : '#dc2626'
     });
 
