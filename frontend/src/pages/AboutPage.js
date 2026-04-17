@@ -51,7 +51,7 @@ function AboutPage() {
           identity, and JavaScript breathes life into the page. Together they form the language of
           the modern web — a canvas for both engineers and designers.
         </p>
-        <img src="/art.png" alt="Web Development as Art" />
+        <img src="art.png" alt="Web Development as Art" />
       </div>
 
       <div className="about-section">
@@ -95,7 +95,7 @@ function AboutPage() {
               </p>
               <p style={{ color: 'var(--text-muted)', marginTop: '8px' }}>
                 {score === quizData.length
-                  ? 'Perfect score! You\'re a web dev wizard! 🧙'
+                  ? 'Perfect score! Youre a web dev wizard! 🧙'
                   : score >= 7
                     ? 'Great job! You clearly know your stuff.'
                     : 'Keep learning — you\'ll ace it next time!'}
@@ -114,7 +114,7 @@ function AboutPage() {
           <li>Adding interactivity with JavaScript and React</li>
           <li>Connecting frontend to a backend API</li>
         </ol>
-        <img src="="/about2.png" alt="Learning web development" />
+        <img src="="about2.png" alt="Learning web development" />
       </div>
 
     </div>
