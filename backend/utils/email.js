@@ -1,24 +1,16 @@
-// backend/utils/email.js
 const nodemailer = require('nodemailer');
 
-// ── Use explicit SMTP settings (works with nodemailer v6, v7, v8) ──
-// Gmail: go to myaccount.google.com → Security → 2-Step Verification → App Passwords
-// Create an App Password for "Mail" and paste the 16-char code as EMAIL_PASS in Render.
 function createTransporter() {
   return nodemailer.createTransport({
-  host: 'smtp-relay.brevo.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  tls: {
-    rejectUnauthorized: false,
-  },
-});
+    host: 'smtp-relay.brevo.com',
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
     tls: {
-      rejectUnauthorized: false, // needed on some cloud hosts
+      rejectUnauthorized: false,
     },
   });
 }
