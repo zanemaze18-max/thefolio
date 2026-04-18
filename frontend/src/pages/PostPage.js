@@ -62,7 +62,7 @@ function PostPage() {
   if (!post)   return <div className="loading-spinner">Post not found.</div>;
 
   const authorPic = post.author?.profilePic
-    ? `http://localhost:5000/uploads/${post.author.profilePic}`
+    ? `https://thefolio-of34.onrender.com/uploads/${post.author.profilePic}`
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author?.name || 'U')}&background=081730&color=fff&size=128`;
 
   return (
@@ -70,7 +70,7 @@ function PostPage() {
 
       {post.image && (
         <img
-          src={`http://localhost:5000/uploads/${post.image}`}
+          src={`https://thefolio-of34.onrender.com/uploads/${post.image}`}
           alt={post.title}
           className="post-hero-img"
         />
