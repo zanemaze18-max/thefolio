@@ -79,7 +79,7 @@ function EditPostPage() {
           </label>
           {existing && !preview && (
             <img
-              src={`http://localhost:5000/uploads/${existing}`}
+              src={`https://thefolio-of34.onrender.com/uploads/${existing}`}
               alt="Current"
               style={{ maxWidth: '100%', marginTop: '10px', borderRadius: '8px', maxHeight: '180px', objectFit: 'cover' }}
             />
