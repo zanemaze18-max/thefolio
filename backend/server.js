@@ -54,7 +54,7 @@ app.listen(PORT, () => {
 
   // Keep Render free tier awake (pings itself every 10 min)
   setInterval(() => {
-    fetch(`https://thefolio-eight.onrender.com`)
+    fetch(`https://thefolio-of34.onrender.com`)
       .catch(() => {});
   }, 10 * 60 * 1000);
 });
