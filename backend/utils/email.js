@@ -6,13 +6,17 @@ const nodemailer = require('nodemailer');
 // Create an App Password for "Mail" and paste the 16-char code as EMAIL_PASS in Render.
 function createTransporter() {
   return nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false, // STARTTLS
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
+  host: 'smtp-relay.brevo.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
     tls: {
       rejectUnauthorized: false, // needed on some cloud hosts
     },
