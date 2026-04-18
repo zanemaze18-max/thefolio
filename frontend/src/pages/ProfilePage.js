@@ -74,7 +74,7 @@ function ProfilePage() {
   const picSrc = picPreview
     ? picPreview
     : user?.profilePic
-    ? `http://localhost:5000/uploads/${user.profilePic}`
+    ? `https://thefolio-of34.onrender.com/uploads/${user.profilePic}`
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=081730&color=fff&size=128`;
 
   if (!user) return <div className="loading-spinner">Loading...</div>;
