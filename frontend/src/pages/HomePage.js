@@ -34,7 +34,7 @@ function HomePage() {
   };
 
   const picSrc = user?.profilePic
-    ? `http://localhost:5000/uploads/${user.profilePic}`
+    ? `https://thefolio-of34.onrender.com/uploads/${user.profilePic}`
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'U')}&background=081730&color=fff&size=128`;
 
   if (loading) return <div className="loading-spinner">Loading posts...</div>;
@@ -68,7 +68,7 @@ function HomePage() {
             <div key={post._id} className="post-card">
               {post.image && (
                 <div className="img-wrap">
-                  <img src={`http://localhost:5000/uploads/${post.image}`} alt={post.title} />
+                  <img src={`https://thefolio-of34.onrender.com/uploads/${post.image}`} alt={post.title} />
                 </div>
               )}
               <div className="post-card-body">
@@ -78,7 +78,7 @@ function HomePage() {
                   <img
                     src={
                       post.author?.profilePic
-                        ? `http://localhost:5000/uploads/${post.author.profilePic}`
+                        ? `https://thefolio-of34.onrender.com/uploads/${post.author.profilePic}`
                         : `https://ui-avatars.com/api/?name=${encodeURIComponent(post.author?.name || 'U')}&background=081730&color=fff&size=64`
                     }
                     alt={post.author?.name}
