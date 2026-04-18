@@ -1,12 +1,9 @@
 // backend/server.js
 require("dotenv").config();
-
 const express = require("express");
 const cors    = require("cors");
 const path    = require("path");
-
 const connectDB = require("./config/db");
-
 const authRoutes    = require("./routes/auth.routes");
 const postRoutes    = require("./routes/post.routes");
 const commentRoutes = require("./routes/comment.routes");
@@ -14,20 +11,18 @@ const messageRoutes = require("./routes/message.routes");
 const adminRoutes   = require("./routes/admin.routes");
 
 const app = express();
-
 connectDB();
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// ── CORS: reads FRONTEND_URL from Render environment variables ──
-// In Render dashboard → Environment → Add:  FRONTEND_URL = https://your-app.vercel.app
 const allowedOrigins = [
   "http://localhost:3000",
-  process.env.FRONTEND_URL,
+  "https://thefolio-eight.vercel.app", // ← your Vercel URL
+  process.env.FRONTEND_URL,            // ← fallback from Render env var
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow Postman / curl (no origin header)
     if (!origin) return callback(null, true);
     if (allowedOrigins.includes(origin)) return callback(null, true);
     console.error("CORS blocked origin:", origin);
@@ -54,4 +49,12 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+
+  // Keep Render free tier awake (pings itself every 10 min)
+  setInterval(() => {
+    fetch(`https://thefolio-eight.onrender.com`)
+      .catch(() => {});
+  }, 10 * 60 * 1000);
+});
